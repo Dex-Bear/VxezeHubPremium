@@ -2452,33 +2452,6 @@ function Library:Window(p)
 	function Tabs:SelectTab(p)
 		Tabs.DefaultIndex = p or 1
 	end
-	function Func:Status(p)
-    	local Text = p.Text or "Status"
-    	local Label = Instance.new("TextLabel")
-    	Label.Name = "Status"
-    	Label.Parent = ScrollingFrame_1
-    	Label.BackgroundColor3 = Theme["Function"]["Label"]["Background"]
-    	Label.Size = UDim2.new(1, -10, 0, 20)
-    	Label.Position = UDim2.new(0, 5, 0, 0)
-    	Label.Text = Text
-    	Label.TextColor3 = Theme["Text & Icon"]
-    	Label.Font = Enum.Font.Gotham
-    	Label.TextSize = 13
-    	Label.TextXAlignment = Enum.TextXAlignment.Left
-    	Label.BackgroundTransparency = 1
-    	Label.TextWrapped = true
-    	Label.AutomaticSize = Enum.AutomaticSize.Y
-    	local statusObj = {}
-    function statusObj:Set(newText)
-        Label.Text = newText
-    end
-    function statusObj:Get()
-        return Label.Text
-    end
-    	statusObj.Object = Label
-    	addToTheme("Function.Label.Background", Label)
-    	return statusObj
-	end
 	function Tabs:Line()
 		local Frame = Instance.new("Frame")
 		local Line = Instance.new("Frame")
@@ -2792,6 +2765,45 @@ function Library:Window(p)
 
 			return New
 		end
+		function Func:Status(p)
+    local Text = p.Text or "Status"
+
+    -- tìm container thật sự (mỗi tab của lib bạn đều có 1 frame riêng)
+    local targetParent = self.Page or self.Section or self.Container or self
+    if not targetParent:IsA("Instance") then
+        for _, v in pairs(self) do
+            if typeof(v) == "Instance" and v:IsA("Frame") then
+                targetParent = v
+                break
+            end
+        end
+    end
+
+    -- tạo label
+    local Label = Instance.new("TextLabel")
+    Label.Name = "Status"
+    Label.Parent = targetParent
+    Label.BackgroundTransparency = 1
+    Label.Size = UDim2.new(1, -10, 0, 20)
+    Label.Position = UDim2.new(0, 5, 0, 0)
+    Label.Text = Text
+    Label.Font = Enum.Font.Gotham
+    Label.TextSize = 13
+    Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Label.TextXAlignment = Enum.TextXAlignment.Left
+    Label.AutomaticSize = Enum.AutomaticSize.Y
+    Label.TextWrapped = true
+
+    local statusObj = {}
+    function statusObj:Set(newText)
+        Label.Text = tostring(newText)
+    end
+    function statusObj:Get()
+        return Label.Text
+    end
+    statusObj.Object = Label
+    return statusObj
+end
 
 		function Func:Toggle(p)
 			local Value = p.Value or false
