@@ -60,11 +60,12 @@ OutlineButton.Size = UDim2.new(0, 50, 0, 50)
 OutlineButton.Position = UDim2.new(0, 12, 0, 12)
 OutlineButton.BackgroundColor3 = _G.Dark
 OutlineButton.BorderSizePixel = 0
+OutlineButton.BackgroundTransparency = 0
 local Stroke = Instance.new("UIStroke")
 Stroke.Parent = OutlineButton
 Stroke.Color = Color3.fromRGB(0, 0, 0)
-Stroke.Thickness = 2
-Stroke.Transparency = 0.4
+Stroke.Thickness = 1.5
+Stroke.Transparency = 0.5
 local Corner = Instance.new("UICorner")
 Corner.Parent = OutlineButton
 Corner.CornerRadius = UDim.new(1, 0)
@@ -72,8 +73,9 @@ local ImageButton = Instance.new("ImageButton")
 ImageButton.Parent = OutlineButton
 ImageButton.AnchorPoint = Vector2.new(0.5, 0.5)
 ImageButton.Position = UDim2.new(0.5, 0, 0.5, 0)
-ImageButton.Size = UDim2.new(0, 40, 0, 40)
+ImageButton.Size = UDim2.new(0, 44, 0, 44)
 ImageButton.BackgroundColor3 = _G.Dark
+ImageButton.BackgroundTransparency = 0
 ImageButton.BorderSizePixel = 0
 ImageButton.Image = "rbxassetid://121343009459144"
 ImageButton.ImageColor3 = _G.Third
@@ -81,29 +83,22 @@ ImageButton.AutoButtonColor = false
 local ImgCorner = Instance.new("UICorner")
 ImgCorner.Parent = ImageButton
 ImgCorner.CornerRadius = UDim.new(1, 0)
-local Shadow = Instance.new("ImageLabel")
-Shadow.Parent = OutlineButton
-Shadow.AnchorPoint = Vector2.new(0.5, 0.5)
-Shadow.Position = UDim2.new(0.5, 0, 0.5, 3)
-Shadow.Size = UDim2.new(0, 52, 0, 52)
-Shadow.BackgroundTransparency = 1
-Shadow.Image = "rbxassetid://1316045217"
-Shadow.ImageTransparency = 0.6
+
 local function HoverEffect()
 	TweenService:Create(ImageButton, TweenInfo.new(0.15), {
-		ImageColor3 = Color3.fromRGB(220, 220, 220),
-		Size = UDim2.new(0, 43, 0, 43)
+		ImageColor3 = Color3.fromRGB(230, 230, 230),
+		Size = UDim2.new(0, 48, 0, 48)
 	}):Play()
 end
 local function UnhoverEffect()
 	TweenService:Create(ImageButton, TweenInfo.new(0.15), {
 		ImageColor3 = _G.Third,
-		Size = UDim2.new(0, 40, 0, 40)
+		Size = UDim2.new(0, 44, 0, 44)
 	}):Play()
 end
 ImageButton.MouseButton1Down:Connect(function()
-	TweenService:Create(ImageButton, TweenInfo.new(0.1), {
-		Size = UDim2.new(0, 38, 0, 38),
+	TweenService:Create(ImageButton, TweenInfo.new(0.08), {
+		Size = UDim2.new(0, 42, 0, 42),
 		ImageColor3 = Color3.fromRGB(180, 180, 180)
 	}):Play()
 end)
