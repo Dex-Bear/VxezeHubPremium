@@ -108,7 +108,29 @@ ImageButton.MouseLeave:Connect(UnhoverEffect)
 ImageButton.MouseButton1Click:Connect(function()
 	local hub = game.CoreGui:FindFirstChild("VxezeHub")
 	if hub then
-		hub.Enabled = not hub.Enabled
+		local enabled = not hub.Enabled
+		hub.Enabled = enabled
+		if enabled then
+			TweenService:Create(ImageButton, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				ImageColor3 = Color3.fromRGB(0, 255, 100),
+				Size = UDim2.new(0, 50, 0, 50)
+			}):Play()
+			wait(0.15)
+			TweenService:Create(ImageButton, TweenInfo.new(0.2), {
+				ImageColor3 = _G.Third,
+				Size = UDim2.new(0, 44, 0, 44)
+			}):Play()
+		else
+			TweenService:Create(ImageButton, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				ImageColor3 = Color3.fromRGB(255, 80, 80),
+				Size = UDim2.new(0, 50, 0, 50)
+			}):Play()
+			wait(0.15)
+			TweenService:Create(ImageButton, TweenInfo.new(0.2), {
+				ImageColor3 = _G.Third,
+				Size = UDim2.new(0, 44, 0, 44)
+			}):Play()
+		end
 	end
 end)
 if MakeDraggable then
@@ -146,9 +168,9 @@ function Update:Notify(desc)
 	OutlineFrame.Parent = NotificationFrame;
 	OutlineFrame.ClipsDescendants = true;
 	OutlineFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30);
-	OutlineFrame.AnchorPoint = Vector2.new(0.5, 1);
+	OutlineFrame.AnchorPoint = Vector2.new(1, 1);
 	OutlineFrame.BackgroundTransparency = 0.4;
-	OutlineFrame.Position = UDim2.new(0.5, 0, -0.2, 0);
+	OutlineFrame.Position = UDim2.new(1, -20, 1.2, 0);
 	OutlineFrame.Size = UDim2.new(0, 412, 0, 72);
 	Frame.Name = "Frame";
 	Frame.Parent = OutlineFrame;
@@ -188,10 +210,11 @@ function Update:Notify(desc)
 	Desc.TextXAlignment = Enum.TextXAlignment.Left;
 	CreateRounded(Frame, 10);
 	CreateRounded(OutlineFrame, 12);
-	OutlineFrame:TweenPosition(UDim2.new(0.5, 0, 0.1 + (#NotificationList) * 0.1, 0), "Out", "Quad", 0.4, true);
+	local yOffset = (#NotificationList) * 0.12;
+	OutlineFrame:TweenPosition(UDim2.new(1, -20, 0.88 - yOffset, 0), "Out", "Quad", 0.4, true);
 	table.insert(NotificationList, {
 		OutlineFrame,
-		title
+		Title
 	});
 end;
 function Update:StartLoad()
@@ -415,7 +438,7 @@ function Update:Window(Config)
 	NameHub.AnchorPoint = Vector2.new(0, 0.5);
 	NameHub.Size = UDim2.new(0, 1, 0, 25);
 	NameHub.Font = Enum.Font.GothamBold;
-	NameHub.Text = "Vxeze Hub [ Premium ]";
+	NameHub.Text = "Vxeze Hub";
 	NameHub.TextSize = 20;
 	NameHub.TextColor3 = Color3.fromRGB(255, 255, 255);
 	NameHub.TextXAlignment = Enum.TextXAlignment.Left;
