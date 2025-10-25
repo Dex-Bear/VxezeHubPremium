@@ -996,8 +996,17 @@ function Update:Window(Config)
 			UICorner_3.CornerRadius = UDim.new(0, 5);
 			UICorner_3.Parent = Black;
 			TextButton.MouseButton1Click:Connect(function()
-				callback();
-			end);
+	        TweenService:Create(TextButton, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		        BackgroundTransparency = 0.4,
+		        Size = UDim2.new(0, 28, 0, 28)
+	        }):Play()
+	            wait(0.1)
+	        TweenService:Create(TextButton, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		        BackgroundTransparency = 0.8,
+		        Size = UDim2.new(0, 25, 0, 25)
+	        }):Play()
+	            pcall(callback)
+            end)
 		end;
 		function main:Toggle(text, config, desc, callback)
 			config = config or false;
