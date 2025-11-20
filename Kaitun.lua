@@ -1,20 +1,40 @@
+local GameConfig = {
+    ["BloxFruit"] = {
+        ids = {85211729168715, 79091703265657, 100117331123089},
+        scripts = {
+            ["Get Race"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua",
+            ["Auto Fruit"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua",
+            ["Boss Hop"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"
+        }
+    },
+    ["TSB"] = {
+        ids = {10449761463},
+        scripts = {
+            ["TSB"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"
+        }
+    },
+    ["Fish It!"] = {
+        ids = {121864768012064},
+        scripts = {
+            ["Fish It!"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/FishIt!.lua"
+        }
+    },
+    ["Mm2"] = {
+        ids = {80469437126309},
+        scripts = {
+            ["Mm2"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/Mm2.lua"
+        }
+    }
+}
 local gameId = game.PlaceId
-if _G.KaitunMode == "Get Race" and (gameId == 85211729168715 or gameId == 79091703265657 or gameId == 100117331123089) then
-  -- BloxFruit
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua"))()
-elseif _G.KaitunMode == "Auto Fruit" and (gameId == 85211729168715 or gameId == 79091703265657 or gameId == 100117331123089) then
-  -- BloxFruit
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua"))()
-elseif _G.KaitunMode == "Boss Hop" and (gameId == 85211729168715 or gameId == 79091703265657 or gameId == 100117331123089) then
-  -- BloxFruit
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"))()
-elseif _G.KaitunMode == "TSB" and (gameId == 10449761463) then
-  -- Tsb
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"))()
-elseif _G.KaitunMode == "Fish It!" and (gameId == 121864768012064) then
-  -- Fish It!
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/FishIt!.lua"))()
-elseif _G.KaitunMode == "Mm2" and (gameId == 80469437126309) then
-  -- Fish It!
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/Mm2.lua"))()
+for gameName, config in pairs(GameConfig) do
+    if table.find(config.ids, gameId) then
+        if _G.KaitunMode and config.scripts[_G.KaitunMode] then
+            local scriptUrl = config.scripts[_G.KaitunMode]
+            pcall(function()
+                loadstring(game:HttpGet(scriptUrl))()
+            end)
+        end
+        break
+    end
 end
