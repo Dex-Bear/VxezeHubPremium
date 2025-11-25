@@ -29,8 +29,8 @@ local GameConfig = {
 local gameId = game.PlaceId
 for gameName, config in pairs(GameConfig) do
     if table.find(config.ids, gameId) then
-        if _G.KaitunMode and config.scripts[_G.KaitunMode] then
-            local scriptUrl = config.scripts[_G.KaitunMode]
+        if _G.Kaitun and config.scripts[_G.Kaitun] then
+            local scriptUrl = config.scripts[_G.Kaitun]
             pcall(function()
                 loadstring(game:HttpGet(scriptUrl))()
             end)
