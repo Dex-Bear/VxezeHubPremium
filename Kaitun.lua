@@ -10,7 +10,7 @@ local GameConfig = {
     ["TSB"] = {
         ids = {10449761463},
         scripts = {
-            ["TSB"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"
+            ["Tsb"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"
         }
     },
     ["Fish It!"] = {
