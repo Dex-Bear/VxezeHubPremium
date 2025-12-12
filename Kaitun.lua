@@ -2,8 +2,8 @@ local GameConfig = {
     ["BloxFruit"] = {
         ids = {85211729168715, 79091703265657, 100117331123089},
         scripts = {
-            ["Get Race"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua",
-            ["Auto Fruit"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua",
+            ["Race"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua",
+            ["Collect"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua",
             ["Boss Hop"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"
         }
     },
