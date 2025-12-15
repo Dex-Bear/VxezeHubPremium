@@ -7,12 +7,6 @@ local GameConfig = {
             ["Boss Hop"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"
         }
     },
-    ["The Strongest Battlegrouds"] = {  
-        ids = {10449761463},
-        scripts = {
-            ["Tsb"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"
-        }
-    },
     ["Fish It!"] = {
         ids = {121864768012064},
         scripts = {
