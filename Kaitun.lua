@@ -3,7 +3,7 @@ local GameConfig = {
         ids = {85211729168715, 79091703265657, 100117331123089},
         scripts = {
             ["Race"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua",
-            ["Collect"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua",
+            ["Find Fruit"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/FindFruit.lua",
             ["Boss Hop"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"
         }
     },
