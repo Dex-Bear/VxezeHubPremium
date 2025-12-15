@@ -26,61 +26,22 @@ local GameConfig = {
         }
     }
 }
+
 local gameId = game.PlaceId
-for gameName, config in pairs(GameConfig) do
+local gameName = nil
+local scriptName = nil
+
+for name, config in pairs(GameConfig) do
     if table.find(config.ids, gameId) then
-        if _G.Kaitun and config.scripts[_G.Kaitun] then
-            local scriptUrl = config.scripts[_G.Kaitun]
-            pcall(function()
-                loadstring(game:HttpGet(scriptUrl))()
-            end)
-        end
+        gameName = name
+        scriptName = _G.Kaitun and config.scripts[_G.Kaitun] and _G.Kaitun or next(config.scripts)
         break
     end
 end
-local GameConfig = {
-    ["Blox Fruit"] = {
-        ids = {85211729168715, 79091703265657, 100117331123089},
-        scripts = {
-            ["Race"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/GetRace.lua",
-            ["Collect"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AutoFruit.lua",
-            ["Boss Hop"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BossHop.lua"
-        }
-    },
-    ["The Strongest Battlegrouds"] = {  
-        ids = {10449761463},
-        scripts = {
-            ["Tsb"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/TSB.lua"
-        }
-    },
-    ["Fish It!"] = {
-        ids = {121864768012064},
-        scripts = {
-            ["Fish It!"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/FishIt!.lua"
-        }
-    },
-    ["Murder Mystery 2"] = {
-        ids = {80469437126309},
-        scripts = {
-            ["Mm2"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/Mm2.lua"
-        }
-    },
-    ["Steal A Brainrot"] = {
-        ids = {96342491571673},
-        scripts = {
-            ["Steal A Brainrot"] = "https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/SAB.lua"
-        }
-    }
-}
-local gameId = game.PlaceId
-for gameName, config in pairs(GameConfig) do
-    if table.find(config.ids, gameId) then
-        if _G.Kaitun and config.scripts[_G.Kaitun] then
-            local scriptUrl = config.scripts[_G.Kaitun]
-            pcall(function()
-                loadstring(game:HttpGet(scriptUrl))()
-            end)
-        end
-        break
-    end
+
+if gameName and scriptName and GameConfig[gameName].scripts[scriptName] then
+    local scriptUrl = GameConfig[gameName].scripts[scriptName]
+    pcall(function()
+        loadstring(game:HttpGet(scriptUrl, true))()
+    end)
 end
