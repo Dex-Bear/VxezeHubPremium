@@ -48,3 +48,4 @@ elseif _G.Kaitun == "Steal A Brainrot" and (
 else
     game.Players.LocalPlayer:Kick("Script not supported for this game")
 end
+-- nguoi tinh 1 dem cua em
