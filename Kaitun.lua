@@ -24,10 +24,7 @@ elseif _G.Kaitun == "Fish It!" and UniverseID == 6701277882 then
 elseif _G.Kaitun == "Mm2" and UniverseID == 66654135 then
     -- Mm2
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/Mm2.lua"))()
-elseif _G.Kaitun == "Steal A Brainrot" and (
-        game.PlaceId == 96342491571673 or
-        UniverseID == 7709344486
-    ) then
+elseif _G.Kaitun == "Steal A Brainrot" and (game.PlaceId == 96342491571673 or UniverseID == 7709344486) then
     -- Steal A Brainrot
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/SAB.lua"))()
 else
