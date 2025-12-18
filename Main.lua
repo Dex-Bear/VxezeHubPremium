@@ -1,14 +1,14 @@
 -- Check Executor Support
-local required = {"hookfunction", "hookmetamethod", "getconnections", "cloneref", "firetouchinterest", "fireproximityprompt", "collectgarbage", "version", "gethwid"}
-for _, funcName in pairs(required) do
-    if not _G[funcName] then
-        game.Players.LocalPlayer:Kick("Unsupported executor: " .. funcName)
-        wait(1)
-        game:Shutdown()
-        return
-    end
+local plr = game.Players.LocalPlayer
+
+if (hookfunction and hookmetamethod and getconnections and cloneref and firetouchinterest and fireproximityprompt and collectgarbage and version and gethwid) then
+    print("Supported Executor!")
+else
+    plr:Kick("Missing hookfunction/hookmetamethod...")
+    local r = rawget(getrawmetatable(plr), "Kick") or plr.Kick
+    r(plr, "")
+    game:Shutdown()
 end
-print("Supported Executor!")
 
 -- Check Game ID
 local UniverseID = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://apis.roblox.com/universes/v1/places/"..game.PlaceId.."/universe")).universeId
