@@ -19,6 +19,11 @@ if game.PlaceId == 7449423635 or game.PlaceId == 2753915549 or game.PlaceId == 4
     repeat task.wait() until game.Players.LocalPlayer
     _G.Team = "Marines"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/BloxFruit.lua"))()
+-- Attack on Titan Revolution
+elseif game.PlaceId == 13379208636 or game.PlaceId == 14916516914 or game.PlaceId == 13379349730 or game.PlaceId == 14012874501 or game.PlaceId == 14932214603 or game.PlaceId == 13904207646 or game.PlaceId == 15220308770 or game.PlaceId == 17688739434 or UniverseID == 4658598196 then
+    repeat task.wait() until game:IsLoaded()
+    repeat task.wait() until game.Players.LocalPlayer
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/VxezeHubPremium/refs/heads/main/AttackonTitanRevolution.lua"))()
 end
 
 -- nguoi tinh 1 dem cua em
